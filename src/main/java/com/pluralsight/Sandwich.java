@@ -1,9 +1,10 @@
 package com.pluralsight;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class Sandwich extends Product implements Priceable {
-    private int size;
+    private String size;
     private String breadType;
     private List<String> toppings;
     private List <String> meat;
@@ -11,25 +12,23 @@ public class Sandwich extends Product implements Priceable {
     private List <String> sauces;
     private boolean toasted;
 
-    public Sandwich(){
 
-    }
-    public Sandwich(int size, String breadType, List<String> toppings, List<String> meat, List<String> cheese, List<String> sauces, boolean toasted) {
+    public Sandwich(String size, String breadType, boolean toasted) {
         this.size = size;
         this.breadType = breadType;
-        this.toppings = toppings;
-        this.meat = meat;
-        this.cheese = cheese;
-        this.sauces = sauces;
+        this.toppings = new ArrayList<>();
+        this.meat = new ArrayList<>();
+        this.cheese = new ArrayList<>();
+        this.sauces = new ArrayList<>();
         this.toasted = toasted;
     }
 
 
-    public int getSize() {
+    public String getSize() {
         return size;
     }
 
-    public void setSize(int size) {
+    public void setSize(String size) {
         this.size = size;
     }
 
@@ -90,78 +89,94 @@ public class Sandwich extends Product implements Priceable {
     public double getPrice() {
 
         double total = 0;
+            //get the size of the sandwich
 
+            switch (size) {
+                case "1":
+                    total += 5.50;
 
-        //get the size of the sandwich
-        switch(size){
-            case 4:
-                total += 5.50;
+                    //calculate the cost of the meats
+//                if(this.meat.size() >= 1) {
+//                    total += 1;
+//
+//                    for (int i = this.meat.size() - 1; i > 0; --i) {
+//                        total += .50;
+//                    }
+//                }
 
-                //calculate the cost of the meats
-                if(this.meat.size() >= 1) {
-                    total += 1;
+//                    //calculate the cost of the cheeses
+//                    if (this.cheese.size() >= 1) {
+//                        total += .75;
+//
+//                        for (int i = this.cheese.size() - 1; i > 0; --i) {
+//                            total += .30;
+//                        }
+//                    }
+                    break;
+                case "2":
+                    total += 7;
+                    //calculate the cost of the meats
+//                    if (this.meat.size() >= 1) {
+//                        total += 2;
+//
+//                        //for loop to calculate price of extra meat
+//                        for (int i = this.meat.size() - 1; i > 0; --i) {
+//                            total += 1;
+//                        }
+//                    }
+//
+//                    //calculate the cost of the cheeses
+//                    if (this.cheese.size() >= 1) {
+//                        total += 1.50;
+//
+//                        //for loop to calculate extra cheese
+//                        for (int i = this.cheese.size() - 1; i > 0; --i) {
+//                            total += .60;
+//                        }
+//                    }
 
-                    for (int i = this.meat.size() - 1; i > 0; --i) {
-                        total += .50;
-                    }
-                }
+                    break;
+                case "3":
+                    total += 8.50;
+                    //calculate the cost of the meats
+//                    if (this.meat.size() >= 1) {
+//                        total += 3.00;
+//
+//                        //for loop to calculate price of extra meat
+//                        for (int i = this.meat.size() - 1; i > 0; --i) {
+//                            total += 1.50;
+//                        }
+//                    }
+//
+//                    //calculate the cost of the cheeses
+//                    if (this.cheese.size() >= 1) {
+//                        total += 2.25;
+//
+//                        //for loop to calculate extra cheese
+//                        for (int i = this.cheese.size() - 1; i > 0; --i) {
+//                            total += .90;
+//                        }
+//                    }
+                    break;
+            }
 
-                //calculate the cost of the cheeses
-                if(this.cheese.size() >= 1) {
-                    total += .75;
-
-                    for (int i = this.meat.size() - 1; i > 0; --i) {
-                        total += .30;
-                    }
-                }
-                break;
-            case 8:
-                total += 7;
-                //calculate the cost of the meats
-                if(this.meat.size() >= 1) {
-                    total += 2;
-
-                    //for loop to calculate price of extra meat
-                    for (int i = this.meat.size() - 1; i > 0; --i) {
-                        total += 1;
-                    }
-                }
-
-                //calculate the cost of the cheeses
-                if (this.cheese.size() >= 1) {
-                    total += 1.50;
-
-                    //for loop to calculate extra cheese
-                    for (int i = this.cheese.size()-1; i > 0; --i) {
-                        total += .60;
-                    }
-                }
-
-                break;
-            case 12:
-            total += 8.50;
-                //calculate the cost of the meats
-                if(this.meat.size() >= 1) {
-                    total += 3.00;
-
-                    //for loop to calculate price of extra meat
-                    for (int i = this.meat.size() - 1; i > 0; --i) {
-                        total += 1.50;
-                    }
-                }
-
-                //calculate the cost of the cheeses
-                if (this.cheese.size() >= 1) {
-                    total += 2.25;
-
-                    //for loop to calculate extra cheese
-                    for (int i = this.cheese.size()-1; i > 0; --i) {
-                        total += .90;
-                    }
-                }
-            break;
+            return total;
         }
 
-        return total;
+
+
+
+    @Override
+    public String toString() {
+        return "Sandwich{" +
+                "size=" + size +
+                ", breadType='" + breadType + '\'' +
+                ", toppings=" + toppings +
+                ", meat=" + meat +
+                ", cheese=" + cheese +
+                ", sauces=" + sauces +
+                ", toasted=" + toasted +
+                '}';
     }
 }
+

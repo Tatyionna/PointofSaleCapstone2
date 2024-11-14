@@ -1,7 +1,7 @@
 package com.pluralsight;
 
 public class Chips extends Product implements Priceable {
-    private String type;
+    private String type, size;
     private double price = 1.50;
 
     public Chips(String type, double price) {

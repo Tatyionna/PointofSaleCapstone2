@@ -12,9 +12,4 @@ public class Order {
       this.totalPrice = totalPrice;
    }
 
-
-   public static void addSandwich() {
-      System.out.println("Select your bread: ");
-
-   }
 }
