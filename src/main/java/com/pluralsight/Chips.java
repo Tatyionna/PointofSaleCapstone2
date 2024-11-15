@@ -1,12 +1,12 @@
 package com.pluralsight;
 
 public class Chips extends Product implements Priceable {
-    private String type, size;
-    private double price = 1.50;
+    private String type;
 
-    public Chips(String type, double price) {
+
+    public Chips(int size, String type) {
+        super(size);
         this.type = type;
-        this.price = price;
     }
 
     @Override
@@ -15,6 +15,6 @@ public class Chips extends Product implements Priceable {
 
     @Override
     public double getPrice() {
-        return price;
+        return 1.50;
     }
 }

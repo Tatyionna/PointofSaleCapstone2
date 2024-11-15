@@ -3,11 +3,11 @@ package com.pluralsight;
 public class Drinks extends Product implements Priceable {
 
     private String flavor;
-    private String size;
 
-    public Drinks(String flavor, String size) {
+    public Drinks(int size, String flavor) {
+        super(size);
         this.flavor = flavor;
-        this.size = size;
+
     }
 
     @Override
@@ -19,15 +19,15 @@ public class Drinks extends Product implements Priceable {
     public double getPrice() {
         double total = 0;
         switch (size) {
-            case "Small": total += 2.00;
+            case 1: total += 2.00;
             break;
-            case "Medium": total += 2.50;
+            case 2: total += 2.50;
             break;
-            case "Large": total += 3.00;
+            case 3: total += 3.00;
             break;
             default:
-                System.out.println("Invalid size. Defaulting to Medium.");
-                total += 2.50;
+                System.out.println("Invalid size. Defaulting to small.");
+                total += 2.00;
                 break;
         }
         return total;
